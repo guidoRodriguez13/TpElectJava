@@ -6,6 +6,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 		<meta charset="UTF-8">
 		<title> E-shop </title>
 	<style>
@@ -24,7 +26,8 @@
 		<%	if (request.getSession().getAttribute("usuario") == null){ %>
 		
 		<h1> Log In </h1>
-		<form action="InicioSesionServlet" method="get">
+		<form action="${pageContext.request.contextPath}/InicioSesionServlet" method="post">
+<!-- 		 <form action="InicioSesionServlet" method="get"> CODIGO ANTERIOR -->
 		<button type="submit" > Ingresar </button>
 		</form>
 		
