@@ -35,7 +35,7 @@ public class AltaUsuario extends HttpServlet {
 			p.setApellido(request.getParameter("apellido"));
 			p.setDireccion(request.getParameter("direccion"));
 			p.setDni(Integer.parseInt(request.getParameter("dni")));
-			p.setTelefono(Integer.parseInt(request.getParameter("telefono")));
+			p.setTelefono(Long.parseLong(request.getParameter("telefono")));
 			p.setEmail(request.getParameter("email"));
 			p.setPassword(request.getParameter("password"));
 			p.setEsAdmin(false);

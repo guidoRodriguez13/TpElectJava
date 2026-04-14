@@ -28,7 +28,7 @@ public class DatosAdministrador {
 			p.setNombre(rs.getString("nombre"));
 			p.setApellido(rs.getString("apellido"));
 			p.setDni(Integer.parseInt(rs.getString("dni")));
-			p.setTelefono(Integer.parseInt(rs.getString("telefono")));
+			p.setTelefono(Long.parseLong(rs.getString("telefono")));
 			p.setDireccion(rs.getString("direccion"));
 			p.setEmail(rs.getString("email"));
 			p.setEsAdmin(rs.getBoolean("esAdmin"));
@@ -69,7 +69,7 @@ public class DatosAdministrador {
 			admin.setNombre(rs.getString("nombre"));
 			admin.setApellido(rs.getString("apellido"));
 			admin.setDni(rs.getInt("dni"));
-			admin.setTelefono(rs.getInt("telefono"));
+			admin.setTelefono(rs.getLong("telefono"));
 			admin.setDireccion(rs.getString("direccion"));
 			admin.setEmail(rs.getString("email"));
 			admin.setEsAdmin(rs.getBoolean("esAdmin"));
@@ -106,7 +106,7 @@ public class DatosAdministrador {
 			stmt.setString(1, p.getNombre());
 			stmt.setString(2, p.getApellido());
 			stmt.setInt(3, p.getDni());
-			stmt.setInt(4, p.getTelefono());
+			stmt.setLong(4, p.getTelefono());
 			stmt.setString(5, p.getDireccion());
 			stmt.setString(6, p.getEmail());
 			stmt.setBoolean(7, p.isEsAdmin());
@@ -141,7 +141,7 @@ public class DatosAdministrador {
 			stmt.setString(2, p.getNombre());
 			stmt.setString(3, p.getApellido());
 			stmt.setInt(4, p.getDni());
-			stmt.setInt(5, p.getTelefono());
+			stmt.setLong(5, p.getTelefono());
 			stmt.setString(6, p.getDireccion());
 			stmt.setString(7, p.getEmail());
 			stmt.setBoolean(8, p.isEsAdmin());
@@ -172,7 +172,7 @@ public class DatosAdministrador {
 			stmt.setString(1, p.getNombre());
 			stmt.setString(2, p.getApellido());
 			stmt.setInt(3, p.getDni());
-			stmt.setInt(4, p.getTelefono());
+			stmt.setLong(4, p.getTelefono());
 			stmt.setString(5, p.getDireccion());
 			stmt.setString(6, p.getEmail());
 			stmt.setBoolean(7, p.isEsAdmin());

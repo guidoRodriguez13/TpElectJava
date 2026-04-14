@@ -180,9 +180,12 @@ public class DatosPersona {
 	public void alta(Persona p) {
 		PreparedStatement stmt = null;
 		ResultSet keyRS = null;
+		Connection conn = null; //new
 		
 		try {
-			stmt = Conexion.getInstancia().getConnection().prepareStatement(
+			conn = Conexion.getInstancia().getConnection(); //new
+//			viejo stmt = Conexion.getInstancia().getConnection().prepareStatement(
+			stmt = conn.prepareStatement( //new
 					"insert into persona(nombre, apellido, dni, telefono, direccion, email, esAdmin, password) "
 					+ "values(?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			// Si el orden es diferente en la bd, no importa 
@@ -190,13 +193,16 @@ public class DatosPersona {
 			stmt.setString(1, p.getNombre());
 			stmt.setString(2, p.getApellido());
 			stmt.setInt(3, p.getDni());
-			stmt.setInt(4, p.getTelefono());
+			stmt.setLong(4, p.getTelefono());
 			stmt.setString(5, p.getDireccion());
 			stmt.setString(6, p.getEmail());
 			stmt.setBoolean(7, p.isEsAdmin());
 			stmt.setString(8, p.getPassword());
 		
 			stmt.executeUpdate(); //devuelve la cantidad de filas actualizadas
+			
+			conn.commit(); // COMMIT NUEVO
+			
 			keyRS = stmt.getGeneratedKeys();
 			
 			if(keyRS != null && keyRS.next()) {
@@ -248,7 +254,7 @@ public class DatosPersona {
 			stmt.setString(1, p.getNombre());
 			stmt.setString(2, p.getApellido());
 			stmt.setInt(3, p.getDni());
-			stmt.setInt(4, p.getTelefono());
+			stmt.setLong(4, p.getTelefono());
 			stmt.setString(5, p.getDireccion());
 			stmt.setString(6, p.getEmail());
 			stmt.setBoolean(7, p.isEsAdmin());

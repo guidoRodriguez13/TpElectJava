@@ -60,7 +60,7 @@ public class DatosCliente {
 			stmt.setString(1, c.getNombre());
 			stmt.setString(2, c.getApellido());
 			stmt.setInt(3, c.getDni());
-			stmt.setInt(4, c.getTelefono());
+			stmt.setLong(4, c.getTelefono());
 			stmt.setString(5, c.getDireccion());
 			stmt.setString(6, c.getEmail());
 			stmt.setBoolean(7, c.isEsAdmin());

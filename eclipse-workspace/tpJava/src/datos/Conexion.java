@@ -10,7 +10,7 @@ public class Conexion {
 	private static String anfitrion = "localhost";
 	private static String puerto = "3306";
 	private static String usuario = "root";
-	private static String contrasena = "47953";
+	private static String contrasena = "admin";
 	private static String tipoBD = "mysql";
 	private static String bd = "tpjava";
 

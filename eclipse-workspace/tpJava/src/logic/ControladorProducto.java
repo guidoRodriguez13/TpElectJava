@@ -1,6 +1,9 @@
 package logic;
 
 import java.util.LinkedList;
+
+import java.util.List;
+
 import datos.DatosProductos;
 import entidades.Categoria;
 import entidades.Producto;
@@ -49,5 +52,9 @@ public class ControladorProducto {
 	public void updatePorCompra(int cant, int idProducto) {
 		datos.updatePorCompra(cant, idProducto);
 	}
-	
+	// NUEVA FUNCION PARA TRAER PRODUCTOS DE LA BD Y MOSTRAR EN INDEX.JSP
+	public List<Producto> getProductosDestacados() {
+	    DatosProductos dao = new DatosProductos();
+	    return dao.getProductosDestacados();
+	}
 }

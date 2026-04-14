@@ -19,7 +19,7 @@
   </head>
 
   <body class="text-center">
-    <form class="form-signin" action="Signin" method="post">
+	<form class="form-signin" action="${pageContext.request.contextPath}/InicioSesionServlet" method="post">
       <img class="mb-4" src="style/bootstrap-solid.html" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Ingrese usuario:</h1>
       <label for="inputEmail" class="sr-only">Email:</label>

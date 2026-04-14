@@ -1,10 +1,12 @@
 package datos;
 
 import java.sql.Connection;
+import java.util.List;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import entidades.Categoria;
@@ -402,5 +404,45 @@ public class DatosProductos {
 			}
 		}
 	}
-
+	//NUEVA FUNCION
+	public List<Producto> getProductosDestacados() {
+	    List<Producto> lista = new ArrayList<>();
+	    Connection conn = null;
+	    PreparedStatement stmt = null;
+	    ResultSet rs = null;
+	    Conexion conexion = Conexion.getInstancia();
+	    
+	    try {
+	        conn = conexion.getConnection();
+	        if (conn == null) return lista;
+	        
+	        // Podés definir qué productos son "destacados"
+	        // Ejemplo: los últimos 4 productos agregados
+	        String sql = "SELECT * FROM producto ASC LIMIT 3";
+	        stmt = conn.prepareStatement(sql);
+	        rs = stmt.executeQuery();
+	        
+	        while (rs.next()) {
+	            Producto p = new Producto();
+	            p.setIdProducto(rs.getInt("idProducto"));
+	            p.setNombre(rs.getString("nombre"));
+	            p.setDescripcion(rs.getString("descripcion"));
+	            p.setPrecio(rs.getInt("precio"));
+	            // ... otros campos
+	            lista.add(p);
+	        }
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (stmt != null) stmt.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        conexion.releaseConnection();
+	    }
+	    return lista;
+	}
 }
