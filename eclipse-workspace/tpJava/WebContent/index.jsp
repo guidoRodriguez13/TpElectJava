@@ -233,8 +233,8 @@
     <div class="navbar">
         <div class="nav-links">
             <a href="index.jsp">Inicio</a>
-            <a href="#">Productos</a>
-            <a href="#">Ofertas</a>
+			<a href="${pageContext.request.contextPath}/BuscarTodosProducto">Productos</a>
+			<a href="#">Ofertas</a>
             <a href="#">Contacto</a>
         </div>
         
@@ -247,7 +247,7 @@
 
     <!-- CONTENIDO PRINCIPAL -->
     <div style="padding: 0 2rem;">
-        <h1> Bienvenidos E-Shop </h1>
+        <h1> Bienvenidos a NarguEZ </h1>
         
         <!-- SECCIÓN USUARIO LOGUEADO (comentada por ahora) -->
         <%-- 
@@ -319,10 +319,10 @@
         <!-- CATEGORÍAS -->
         <h2>Categorías</h2>
         <div style="display: flex; gap: 10px; margin: 20px 0;">
-            <button class="btn btn-outline">Electrónica</button>
-            <button class="btn btn-outline">Ropa</button>
-            <button class="btn btn-outline">Hogar</button>
-            <button class="btn btn-outline">Deportes</button>
+            <button class="btn btn-outline">Memorias</button>
+            <button class="btn btn-outline">Almacenamiento</button>
+            <button class="btn btn-outline">Tarjetas graficas</button>
+            <button class="btn btn-outline">Fuentes</button>
         </div>
     </div>
 </body>

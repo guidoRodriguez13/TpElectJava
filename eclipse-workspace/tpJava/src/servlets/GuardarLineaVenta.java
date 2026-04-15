@@ -34,7 +34,14 @@ public class GuardarLineaVenta extends HttpServlet {
 		lineaVenta.setPrecioUnit(lineaVenta.getProd().getPrecio()); //Precio duplicado
 		
 		HttpSession misession = request.getSession();
+		
 		Venta venta = (Venta) misession.getAttribute("venta");
+	    
+	    // Si no existe venta, crear una nueva
+	    if (venta == null) {
+	        venta = new Venta();
+	    }
+//		Venta venta = (Venta) misession.getAttribute("venta"); 
 		venta.addLinea(lineaVenta);
 		
 		//Guardo la venta en la session
