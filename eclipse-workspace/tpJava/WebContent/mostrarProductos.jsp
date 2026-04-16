@@ -185,7 +185,6 @@
 					<p>No hay productos disponibles.</p>
 			<% } %>
 			
-			<p>---------------------------------</p>
 			<a href="index.jsp">Volver a Inicio</a>
 		</div>
 	</body>
@@ -202,14 +201,14 @@
 <!-- 		<meta charset="UTF-8"> -->
 <!--     <title>Mostrar productos</title> -->
 <!--     <style> -->
-/*         .form-container { */
-/*             display: inline-block; */
-/*         } */
+<!-- /*         .form-container { */ -->
+<!-- /*             display: inline-block; */ -->
+<!-- /*         } */ -->
         
-/*         form { */
-/*             display: inline-block; */
-/*             margin-right: 10px; */
-/*         } */
+<!-- /*         form { */ -->
+<!-- /*             display: inline-block; */ -->
+<!-- /*             margin-right: 10px; */ -->
+<!-- /*         } */ -->
 <!--     </style> -->
 <!-- 	</head> -->
 <!-- 	<body> -->
@@ -224,9 +223,9 @@
 <!-- 			</form> -->
 <!-- 		</div> -->
 <%-- 		<% --%>
-// 			List<Producto> listaProductos = (List<Producto>) session.getAttribute("prods");
-// 			if (listaProductos != null && !listaProductos.isEmpty()) {
-// 	        	for (Producto p : listaProductos) {
+<!-- // 			List<Producto> listaProductos = (List<Producto>) session.getAttribute("prods"); -->
+<!-- // 			if (listaProductos != null && !listaProductos.isEmpty()) { -->
+<!-- // 	        	for (Producto p : listaProductos) { -->
 <%-- 		%> --%>
 <!-- 				<p> -->
 <%--             	<strong>ID:</strong> <%=p.getIdProducto() %> | --%>
@@ -238,8 +237,8 @@
 <%--             	<strong>Marca:</strong> <%=p.getBrand().getNombre() %> --%>
 <!--         		</p> -->
 <%-- 		<%  --%>
-// 			}
-// 	       } else {
+<!-- // 			} -->
+<!-- // 	       } else { -->
 <%-- 	    %> --%>
 <!-- 	    	<p>No hay productos disponibles.</p> -->
 <%-- 		<% } %> --%>
