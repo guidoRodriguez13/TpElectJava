@@ -105,7 +105,7 @@ public class DatosAdministrador {
 			//roundtriptime ida y vuelta hasta la bd
 			stmt.setString(1, p.getNombre());
 			stmt.setString(2, p.getApellido());
-			stmt.setInt(3, p.getDni());
+			stmt.setLong(3, p.getDni());
 			stmt.setLong(4, p.getTelefono());
 			stmt.setString(5, p.getDireccion());
 			stmt.setString(6, p.getEmail());
@@ -140,7 +140,7 @@ public class DatosAdministrador {
 			
 			stmt.setString(2, p.getNombre());
 			stmt.setString(3, p.getApellido());
-			stmt.setInt(4, p.getDni());
+			stmt.setLong(4, p.getDni());
 			stmt.setLong(5, p.getTelefono());
 			stmt.setString(6, p.getDireccion());
 			stmt.setString(7, p.getEmail());
@@ -171,7 +171,7 @@ public class DatosAdministrador {
 			
 			stmt.setString(1, p.getNombre());
 			stmt.setString(2, p.getApellido());
-			stmt.setInt(3, p.getDni());
+			stmt.setLong(3, p.getDni());
 			stmt.setLong(4, p.getTelefono());
 			stmt.setString(5, p.getDireccion());
 			stmt.setString(6, p.getEmail());

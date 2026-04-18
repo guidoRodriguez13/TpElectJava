@@ -3,6 +3,7 @@ package logic;
 import java.util.LinkedList;
 import datos.DatosPersona;
 import entidades.Persona;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class ControladorPersona {
 
@@ -38,5 +39,17 @@ public class ControladorPersona {
 
 	public void update(Persona p) {
 		datos.update(p);
+	}
+	
+	public Persona validarLogin(String email, String passwordPlana) {
+	    DatosPersona dp = new DatosPersona();
+	    Persona persona = dp.getByEmail(email);
+	    if (persona != null) {
+	        // Verifico passwd plana vs hash guardado
+	        if (BCrypt.checkpw(passwordPlana, persona.getPassword())) {
+	            return persona;
+	        }
+	    }
+	    return null;
 	}
 }

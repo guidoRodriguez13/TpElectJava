@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.mindrot.jbcrypt.BCrypt;
 
 import entidades.Cliente;
 import entidades.Persona;
@@ -37,7 +38,13 @@ public class AltaUsuario extends HttpServlet {
 			p.setDni(Integer.parseInt(request.getParameter("dni")));
 			p.setTelefono(Long.parseLong(request.getParameter("telefono")));
 			p.setEmail(request.getParameter("email"));
-			p.setPassword(request.getParameter("password"));
+			//p.setPassword(request.getParameter("password"));
+			
+			//Hash para la contraseña del usuario y posterior guardado
+			String passwordPlana = request.getParameter("password");
+			String passwordHasheada = BCrypt.hashpw(passwordPlana, BCrypt.gensalt());
+			p.setPassword(passwordHasheada);
+			
 			p.setEsAdmin(false);
 			
 			cp.alta(p);

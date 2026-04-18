@@ -8,7 +8,7 @@ public class Persona {
 	private int idPersona;
 	private String nombre;
 	private String apellido;
-	private int dni;
+	private long dni;
 	private long telefono;
 	private String direccion;
 	private String email;
@@ -52,11 +52,11 @@ public class Persona {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public int getDni() {
+	public long getDni() {
 		return dni;
 	}
-	public void setDni(int dni) {
-		this.dni = dni;
+	public void setDni(long l) {
+		this.dni = l;
 	}
 	public long getTelefono() {
 		return telefono;

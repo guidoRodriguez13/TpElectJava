@@ -59,7 +59,7 @@ public class DatosCliente {
 			//roundtriptime ida y vuelta hasta la bd
 			stmt.setString(1, c.getNombre());
 			stmt.setString(2, c.getApellido());
-			stmt.setInt(3, c.getDni());
+			stmt.setLong(3, c.getDni());
 			stmt.setLong(4, c.getTelefono());
 			stmt.setString(5, c.getDireccion());
 			stmt.setString(6, c.getEmail());

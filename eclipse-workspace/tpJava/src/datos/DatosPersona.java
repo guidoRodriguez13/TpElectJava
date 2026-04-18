@@ -64,7 +64,7 @@ public class DatosPersona {
 			stmt = Conexion.getInstancia().getConnection().prepareStatement("select id, nombre, apellido, dni, telefono, "
 					+ "direccion, email, esAdmin, password from persona where dni=?");
 			
-			stmt.setInt(1, per.getDni());
+			stmt.setLong(1, per.getDni());
 			rs = stmt.executeQuery();
 			
 			if (rs!=null && rs.next()) {
@@ -192,7 +192,7 @@ public class DatosPersona {
 			//roundtriptime ida y vuelta hasta la bd
 			stmt.setString(1, p.getNombre());
 			stmt.setString(2, p.getApellido());
-			stmt.setInt(3, p.getDni());
+			stmt.setLong(3, p.getDni());
 			stmt.setLong(4, p.getTelefono());
 			stmt.setString(5, p.getDireccion());
 			stmt.setString(6, p.getEmail());
@@ -253,7 +253,7 @@ public class DatosPersona {
 			
 			stmt.setString(1, p.getNombre());
 			stmt.setString(2, p.getApellido());
-			stmt.setInt(3, p.getDni());
+			stmt.setLong(3, p.getDni());
 			stmt.setLong(4, p.getTelefono());
 			stmt.setString(5, p.getDireccion());
 			stmt.setString(6, p.getEmail());
@@ -274,4 +274,48 @@ public class DatosPersona {
 			}
 		}
 	}
+	//Nuevo metodo para buscar por email
+	public Persona getByEmail(String email) {
+	    Persona p = null;
+	    PreparedStatement stmt = null;
+	    ResultSet rs = null;
+	    
+	    try {
+	        stmt = Conexion.getInstancia().getConnection().prepareStatement(
+	            "select id, nombre, apellido, dni, telefono, direccion, email, esAdmin, password from persona where email=?");
+	        
+	        stmt.setString(1, email);
+	        rs = stmt.executeQuery();
+	        
+	        if (rs != null && rs.next()) {
+	            p = new Persona();
+	            p.setIdPersona(rs.getInt("id"));
+	            p.setNombre(rs.getString("nombre"));
+	            p.setApellido(rs.getString("apellido"));
+	            p.setDni(rs.getLong("dni"));
+	            p.setTelefono(rs.getLong("telefono"));
+	            p.setDireccion(rs.getString("direccion"));
+	            p.setEmail(rs.getString("email"));
+	            p.setEsAdmin(rs.getBoolean("esAdmin"));
+	            p.setPassword(rs.getString("password"));  // Este es el HASH
+	        }
+	        
+	        return p;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return null;
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (stmt != null) stmt.close();
+	            Conexion.getInstancia().releaseConnection();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	}
+	
 }
+
+
