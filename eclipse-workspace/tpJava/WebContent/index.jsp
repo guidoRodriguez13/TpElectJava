@@ -180,11 +180,12 @@
         <!-- CATEGORÍAS -->
         <h2>Categorías</h2>
         <div style="display: flex; gap: 10px; margin: 20px 0;">
-            <button class="btn btn-outline">Memorias</button>
-            <button class="btn btn-outline">Almacenamiento</button>
-            <button class="btn btn-outline">Tarjetas graficas</button>
-            <button class="btn btn-outline">Fuentes</button>
-        </div>
+		    <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/BuscarTodosPorCategoria?idCategoria=3'">Memorias</button>
+		    <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/BuscarTodosPorCategoria?idCategoria=4'">Almacenamiento</button>
+		    <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/BuscarTodosPorCategoria?idCategoria=2'">Tarjetas gráficas</button>
+		    <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/BuscarTodosPorCategoria?idCategoria=5'">Fuentes</button>
+		    <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/BuscarTodosPorCategoria?idCategoria=1'">Procesadores</button>
+		</div>
     </div>
 </body>
 </html>

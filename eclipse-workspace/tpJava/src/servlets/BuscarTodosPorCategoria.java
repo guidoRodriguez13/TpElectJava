@@ -43,6 +43,7 @@ public class BuscarTodosPorCategoria extends HttpServlet {
 		HttpSession misession = request.getSession();
 		misession.setAttribute("prods", prods);
 		misession.setAttribute("categoria", cat);
+		misession.setAttribute("nombreCategoria", c.getNombre()); //guardo el nombre para usarlo en el jsp
 		
 		request.getRequestDispatcher("ProductosPorCategoria.jsp").forward(request, response);
 	}
