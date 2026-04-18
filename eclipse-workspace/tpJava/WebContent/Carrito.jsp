@@ -1,3 +1,4 @@
+<%@page import="entidades.Persona"%>
 <%@page import="entidades.Venta"%>
 <%@page import="entidades.LineaVenta"%>
 <%@page import="java.util.List"%>
@@ -155,7 +156,7 @@
             
             <div class="nav-buttons">
                 <% if (session.getAttribute("usuario") == null) { %>
-                    <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/formularioInicioSesion.jsp'">Iniciar Sesión</button>
+                    <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/FormularioInicioSesion.jsp'">Iniciar Sesión</button>
                     <button class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/NuevaCuenta'">Registrarse</button>
                 <% } else { %>
                     <span>Bienvenido, ${usuario.nombre}</span>

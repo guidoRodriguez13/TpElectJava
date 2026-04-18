@@ -94,7 +94,7 @@
         
         <div class="nav-buttons">
 		    <% if (session.getAttribute("usuario") == null) { %>
-		        <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/FormularioInicioSesion.jsp'">Iniciar Sesión</button>
+				<button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/FormularioInicioSesion.jsp'">Iniciar Sesión</button>
 		        <button class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/NuevaCuenta'">Registrarse</button>
 		    <% } else { 
 		        Persona user = (Persona) session.getAttribute("usuario");
