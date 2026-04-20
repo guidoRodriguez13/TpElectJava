@@ -31,8 +31,8 @@ public class DatosPersona {
 				p.setIdPersona(rs.getInt("id"));
 				p.setNombre(rs.getString("nombre"));
 				p.setApellido(rs.getString("apellido"));
-				p.setDni(rs.getInt("dni"));
-				p.setTelefono(rs.getInt("telefono"));
+				p.setDni(rs.getLong("dni"));
+				p.setTelefono(rs.getLong("telefono"));
 				p.setDireccion(rs.getString("direccion"));
 				p.setEmail(rs.getString("email"));
 				p.setEsAdmin(rs.getBoolean("esAdmin"));
@@ -72,8 +72,8 @@ public class DatosPersona {
 				p.setIdPersona(rs.getInt("id"));
 				p.setNombre(rs.getString("nombre"));
 				p.setApellido(rs.getString("apellido"));
-				p.setDni(rs.getInt("dni"));
-				p.setTelefono(rs.getInt("telefono"));
+				p.setDni(rs.getLong("dni"));
+				p.setTelefono(rs.getLong("telefono"));
 				p.setDireccion(rs.getString("direccion"));
 				p.setEmail(rs.getString("email"));
 				p.setEsAdmin(rs.getBoolean("esAdmin"));
@@ -111,8 +111,8 @@ public class DatosPersona {
 			p.setIdPersona(rs.getInt("id"));
 			p.setNombre(rs.getString("nombre"));
 			p.setApellido(rs.getString("apellido"));
-			p.setDni(Integer.parseInt(rs.getString("dni")));
-			p.setTelefono(Integer.parseInt(rs.getString("telefono")));
+			p.setDni(rs.getLong("dni"));
+			p.setTelefono(rs.getLong("telefono"));
 			p.setDireccion(rs.getString("direccion"));
 			p.setEmail(rs.getString("email"));
 			p.setEsAdmin(rs.getBoolean("esAdmin"));
@@ -152,8 +152,8 @@ public class DatosPersona {
 			per.setIdPersona(rs.getInt("id"));
 			per.setNombre(rs.getString("nombre"));
 			per.setApellido(rs.getString("apellido"));
-			per.setDni(rs.getInt("dni"));
-			per.setTelefono(rs.getInt("telefono"));
+			per.setDni(rs.getLong("dni"));
+			per.setTelefono(rs.getLong("telefono"));
 			per.setDireccion(rs.getString("direccion"));
 			per.setEmail(rs.getString("email"));
 			per.setEsAdmin(rs.getBoolean("esAdmin"));

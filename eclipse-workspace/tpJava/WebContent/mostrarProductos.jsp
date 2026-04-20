@@ -3,6 +3,7 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="entidades.Producto"%>
+<%@page import="entidades.Persona"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
@@ -109,14 +110,44 @@
 	            border-bottom: 2px solid #ddd;
 	            padding-bottom: 10px;
 	        }
+	        .dropdown {
+			    position: relative;
+			    display: inline-block;
+			}
+			
+			.dropdown-content {
+			    display: none;
+			    position: absolute;
+			    background-color: #f9f9f9;
+			    min-width: 160px;
+			    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			    z-index: 1;
+			}
+			
+			.dropdown-content a {
+			    color: black;
+			    padding: 12px 16px;
+			    text-decoration: none;
+			    display: block;
+			    text-align: left;
+			}
+			
+			.dropdown-content a:hover {
+			    background-color: #f1f1f1;
+			}
+			
+			.dropdown:hover .dropdown-content {
+			    display: block;
+			}
     	</style>
 	</head>
 	<body>
 		<div style="padding: 0 2rem;">
 			<!-- NAVBAR -->
+			<!-- NAVBAR -->
 			<div class="navbar">
 			    <div class="nav-links">
-			        <a href="${pageContext.request.contextPath}/index.jsp">Inicio</a>
+			        <a href="index.jsp">Inicio</a>
 			        <a href="${pageContext.request.contextPath}/BuscarTodosProducto">Productos</a>
 			        <a href="#">Ofertas</a>
 			        <a href="#">Contacto</a>
@@ -124,10 +155,25 @@
 			    
 			    <div class="nav-buttons">
 			        <% if (session.getAttribute("usuario") == null) { %>
-			            <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/formularioInicioSesion.jsp'">Iniciar Sesión</button>
+			            <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/FormularioInicioSesion.jsp'">Iniciar Sesión</button>
 			            <button class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/NuevaCuenta'">Registrarse</button>
-			        <% } else { %>
-			            <span>Bienvenido, ${usuario.nombre}</span>
+			        <% } else { 
+			            Persona user = (Persona) session.getAttribute("usuario");
+			        %>
+			            <span style="font-weight: bold; color: #28a745;">Bienvenido, <%= user.getNombre() %></span>
+			            
+			            <% if (user.isEsAdmin()) { %>
+			                <div class="dropdown">
+			                    <button class="btn btn-outline">Administrar ▼</button>
+			                    <div class="dropdown-content">
+			                        <a href="${pageContext.request.contextPath}/FormularioAltaProductoServlet">➕ Alta Producto</a>
+			                        <a href="${pageContext.request.contextPath}/BuscarTodosUsuarios">👥 Listar Usuarios</a>
+			                        <a href="${pageContext.request.contextPath}/FormularioAltaCategoria">🏷️ Nueva Categoría</a>
+			                        <a href="${pageContext.request.contextPath}/FormularioAltaMarca">⭐ Nueva Marca</a>
+			                    </div>
+			                </div>
+			            <% } %>
+			            
 			            <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/CerrarSesion'">Cerrar Sesión</button>
 			        <% } %>
 			        <button class="btn" style="background-color: #28a745;" onclick="location.href='${pageContext.request.contextPath}/MostrarCarrito'">🛒 Carrito</button>
