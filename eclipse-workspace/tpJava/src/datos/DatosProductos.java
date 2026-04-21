@@ -22,7 +22,7 @@ public class DatosProductos {
 
 		try {
 			LinkedList<Producto> prods = new LinkedList<>();
-			stmt = Conexion.getInstancia().getConnection().prepareStatement("SELECT p.id , p.descripcion ,"
+			stmt = Conexion.getInstancia().getConnection().prepareStatement("SELECT p.idProducto , p.descripcion ,"
 					+ " p.nombre , p.precio , p.stock , p.idMarca , m.nombreMarca AS nombreMarca ,"
 					+ " p.idCategoria , c.nombreCat AS nombreCat from producto p"
 					+ " JOIN marca m ON p.idMarca = m.idMarca "
@@ -34,7 +34,7 @@ public class DatosProductos {
 				Marca m = new Marca();
 				Categoria c = new Categoria();
 
-				p.setIdProducto(rs.getInt("id"));
+				p.setIdProducto(rs.getInt("idProducto"));
 				p.setDescripcion(rs.getString("descripcion"));
 				p.setNombre(rs.getString("nombre"));
 				p.setPrecio(rs.getInt("precio"));
@@ -70,7 +70,7 @@ public class DatosProductos {
 		}
 	}
 
-	public Producto buscar(Producto p) { // Recibo un producto que tenga solo el id
+	public Producto buscar(Producto p) { // Recibo un producto que tenga solo el idProducto
 		ResultSet rs = null;
 		PreparedStatement stmt = null;
 
@@ -79,19 +79,19 @@ public class DatosProductos {
 			Marca m = new Marca();
 			Categoria c = new Categoria();
 			
-			stmt = Conexion.getInstancia().getConnection().prepareStatement("SELECT p.id , p.descripcion ,"
+			stmt = Conexion.getInstancia().getConnection().prepareStatement("SELECT p.idProducto , p.descripcion ,"
 					+ " p.nombre , p.precio , p.stock , p.idMarca , m.nombreMarca AS nombreMarca ,"
 					+ " p.idCategoria , c.nombreCat AS nombreCat from producto p "
 					+ " JOIN marca m ON p.idMarca = m.idMarca "
 					+ " JOIN categoria c ON p.idCategoria = c.idCategoria "
-					+ " where id = ?");
+					+ " where idProducto = ?");
 			
 			stmt.setInt(1, p.getIdProducto()); // Asigno al 1er ? el valor (no arranca en 0)
 			rs = stmt.executeQuery();
 
 			if (rs != null && rs.next()) { //Consulta rs.next() no deberia estar?
 				prod = new Producto(); // Creo aca porque sino encuentra debe devolver null
-				prod.setIdProducto(rs.getInt("id"));
+				prod.setIdProducto(rs.getInt("idProducto"));
 				prod.setDescripcion(rs.getString("descripcion"));
 				prod.setNombre(rs.getString("nombre"));
 				prod.setPrecio(rs.getInt("precio"));
@@ -169,7 +169,7 @@ public class DatosProductos {
 		Connection conn = Conexion.getInstancia().getConnection();
 
 		try {
-			stmt = conn.prepareStatement("DELETE from producto where id = ?");
+			stmt = conn.prepareStatement("DELETE from producto where idProducto = ?");
 
 			stmt.setInt(1, p.getIdProducto());
 
@@ -192,7 +192,7 @@ public class DatosProductos {
 
 		try {
 			stmt = Conexion.getInstancia().getConnection().prepareStatement(
-					"UPDATE producto SET nombre = ?, descripcion = ?, precio = ?, stock = ?, idmarca = ?, idcategoria = ? where id = ?");
+					"UPDATE producto SET nombre = ?, descripcion = ?, precio = ?, stock = ?, idmarca = ?, idcategoria = ? where idProducto = ?");
 
 			stmt.setString(1, p.getNombre());
 			stmt.setString(2, p.getDescripcion());
@@ -222,7 +222,7 @@ public class DatosProductos {
 
 		try {
 			stmt = Conexion.getInstancia().getConnection().prepareStatement(
-					"UPDATE producto SET stock = stock-? WHERE id = ?");
+					"UPDATE producto SET stock = stock-? WHERE idProducto = ?");
 
 			stmt.setInt(1, cant); // Restar la cantidad vendida al stock
 		    stmt.setInt(2, id);   // ID del producto
@@ -251,7 +251,7 @@ public class DatosProductos {
 		try {
 			LinkedList<Producto> prods = new LinkedList<>();
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT p.id , p.descripcion , p.nombre , p.precio , p.stock , p.idMarca , m.nombreMarca AS nombreMarca , p.idCategoria , c.nombreCat AS nombreCat "
+			rs = stmt.executeQuery("SELECT p.idProducto , p.descripcion , p.nombre , p.precio , p.stock , p.idMarca , m.nombreMarca AS nombreMarca , p.idCategoria , c.nombreCat AS nombreCat "
 					+ " FROM producto p "
 					+ " JOIN marca m ON p.idMarca = m.idMarca "
 					+ " JOIN categoria c ON p.idCategoria = c.idCategoria "
@@ -262,7 +262,7 @@ public class DatosProductos {
 				Marca m = new Marca();
 				Categoria c = new Categoria();
 
-				p.setIdProducto(rs.getInt("id"));
+				p.setIdProducto(rs.getInt("idProducto"));
 				p.setDescripcion(rs.getString("descripcion"));
 				p.setNombre(rs.getString("nombre"));
 				p.setPrecio(rs.getInt("precio"));
@@ -305,7 +305,7 @@ public class DatosProductos {
 		try {
 			LinkedList<Producto> prods = new LinkedList<>();
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT p.id , p.descripcion , p.nombre , p.precio , p.stock , p.idMarca , m.nombreMarca AS nombreMarca , p.idCategoria , c.nombreCat AS nombreCat "
+			rs = stmt.executeQuery("SELECT p.idProducto , p.descripcion , p.nombre , p.precio , p.stock , p.idMarca , m.nombreMarca AS nombreMarca , p.idCategoria , c.nombreCat AS nombreCat "
 					+ " FROM producto p "
 					+ " JOIN marca m ON p.idMarca = m.idMarca "
 					+ " JOIN categoria c ON p.idCategoria = c.idCategoria "
@@ -316,7 +316,7 @@ public class DatosProductos {
 				Marca m = new Marca();
 				Categoria c = new Categoria();
 
-				p.setIdProducto(rs.getInt("id"));
+				p.setIdProducto(rs.getInt("idProducto"));
 				p.setDescripcion(rs.getString("descripcion"));
 				p.setNombre(rs.getString("nombre"));
 				p.setPrecio(rs.getInt("precio"));
@@ -356,7 +356,7 @@ public class DatosProductos {
 		
 		try {
 			LinkedList<Producto> prods = new LinkedList<>();			
-			stmt = Conexion.getInstancia().getConnection().prepareStatement("SELECT p.id , p.descripcion ,"
+			stmt = Conexion.getInstancia().getConnection().prepareStatement("SELECT p.idProducto , p.descripcion ,"
 			+ " p.nombre , p.precio , p.stock , p.idMarca , m.nombreMarca AS nombreMarca ,"
 			+ " p.idCategoria , c.nombreCat AS nombreCat from producto p "
 			+ " JOIN marca m ON p.idMarca = m.idMarca "
@@ -371,7 +371,7 @@ public class DatosProductos {
 				Marca m = new Marca();
 				Categoria cat = new Categoria();
 
-				p.setIdProducto(rs.getInt("id"));
+				p.setIdProducto(rs.getInt("idProducto"));
 				p.setDescripcion(rs.getString("descripcion"));
 				p.setNombre(rs.getString("nombre"));
 				p.setPrecio(rs.getInt("precio"));

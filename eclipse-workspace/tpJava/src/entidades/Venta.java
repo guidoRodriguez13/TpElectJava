@@ -8,6 +8,10 @@ public class Venta {
 
 	private int idVenta;
 	private Date fechaVenta;
+	private String formaEnvio;
+	private double costoEnvio;
+	private String formaPago;
+	
 	//private Cliente cli;
 	private Persona per;
 	List<LineaVenta> lineas = new ArrayList<>();
@@ -47,5 +51,28 @@ public class Venta {
 	public void addLinea(LineaVenta linea) {
 		this.lineas.add(linea);
 	}
+
+	public String getFormaEnvio() {
+		return formaEnvio;
+	}
 	
+	public void setFormaEnvio(String formaEnvio) {
+		this.formaEnvio = formaEnvio;
+	}
+	
+	public double getCostoEnvio() {
+		return costoEnvio;
+	}
+	
+	public void setCostoEnvio(double costoEnvio) {
+		this.costoEnvio = costoEnvio;
+	}
+	
+	public String getFormaPago() {
+		return formaPago;
+	}
+	
+	public void setFormaPago(String formaPago) {
+		this.formaPago = formaPago;
+	}
 }

@@ -268,9 +268,12 @@
                 <form action="BuscarTodosProducto" method="GET">
                     <button type="submit" class="btn btn-outline">🛍️ Seguir Comprando</button>
                 </form>
-                <form action="FinalizarCompra" method="POST">
-                    <button type="submit" class="btn btn-success">✅ Confirmar Compra</button>
-                </form>
+                <form action="ResumenCompra.jsp" method="GET">
+				    <button type="submit" class="btn btn-success">✅ Confirmar Compra</button>
+				</form>
+<!--                 <form action="FinalizarCompra" method="POST"> -->
+<!--                     <button type="submit" class="btn btn-success">✅ Confirmar Compra</button> -->
+<!--                 </form> -->
             </div>
             
         <%
