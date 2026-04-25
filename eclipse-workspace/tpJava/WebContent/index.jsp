@@ -8,113 +8,119 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <meta charset="UTF-8">
-    <title> E-shop </title>
-    <style>
-        /* Navbar */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 2rem;
-        }
+    <title>E-shop - Inicio</title>
+<!--     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"> -->
+<!--     <meta charset="UTF-8"> -->
+<!--     <title> E-shop </title> -->
+<!--     <style> -->
+<!-- /*         /* Navbar */ */ -->
+<!-- /*         .navbar { */ -->
+<!-- /*             display: flex; */ -->
+<!-- /*             justify-content: space-between; */ -->
+<!-- /*             align-items: center; */ -->
+<!-- /*             padding: 1rem 2rem; */ -->
+<!-- /*             background-color: #f8f9fa; */ -->
+<!-- /*             border-bottom: 1px solid #ddd; */ -->
+<!-- /*             margin-bottom: 2rem; */ -->
+<!-- /*         } */ -->
         
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
+<!-- /*         .nav-links { */ -->
+<!-- /*             display: flex; */ -->
+<!-- /*             gap: 2rem; */ -->
+<!-- /*         } */ -->
         
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
+<!-- /*         .nav-links a { */ -->
+<!-- /*             text-decoration: none; */ -->
+<!-- /*             color: #333; */ -->
+<!-- /*             font-weight: 500; */ -->
+<!-- /*         } */ -->
         
-        .nav-links a:hover {
-            color: #007bff;
-        }
+<!-- /*         .nav-links a:hover { */ -->
+<!-- /*             color: #007bff; */ -->
+<!-- /*         } */ -->
         
-        .nav-buttons {
-            display: flex;
-            gap: 1rem;
-        }
+<!-- /*         .nav-buttons { */ -->
+<!-- /*             display: flex; */ -->
+<!-- /*             gap: 1rem; */ -->
+<!-- /*         } */ -->
         
-        .btn {
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-            border: none;
-        }
+<!-- /*         .btn { */ -->
+<!-- /*             padding: 0.5rem 1rem; */ -->
+<!-- /*             border-radius: 4px; */ -->
+<!-- /*             text-decoration: none; */ -->
+<!-- /*             font-weight: 500; */ -->
+<!-- /*             cursor: pointer; */ -->
+<!-- /*             border: none; */ -->
+<!-- /*         } */ -->
         
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid #007bff;
-            color: #007bff;
-        }
+<!-- /*         .btn-outline { */ -->
+<!-- /*             background-color: transparent; */ -->
+<!-- /*             border: 1px solid #007bff; */ -->
+<!-- /*             color: #007bff; */ -->
+<!-- /*         } */ -->
         
-        .btn-outline:hover {
-            background-color: #007bff;
-            color: white;
-        }
+<!-- /*         .btn-outline:hover { */ -->
+<!-- /*             background-color: #007bff; */ -->
+<!-- /*             color: white; */ -->
+<!-- /*         } */ -->
         
-        .btn-primary {
-            background-color: #007bff;
-            color: white;
-        }
+<!-- /*         .btn-primary { */ -->
+<!-- /*             background-color: #007bff; */ -->
+<!-- /*             color: white; */ -->
+<!-- /*         } */ -->
         
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
+<!-- /*         .btn-primary:hover { */ -->
+<!-- /*             background-color: #0056b3; */ -->
+<!-- /*         } */ -->
         
-        /* Mantener estilos originales */
-        .form-container {
-            display: inline-block;
-        }
+<!-- /*         /* Mantener estilos originales */ */ -->
+<!-- /*         .form-container { */ -->
+<!-- /*             display: inline-block; */ -->
+<!-- /*         } */ -->
         
-        form {
-            display: inline-block;
-            margin-right: 10px;
-        }
-        .dropdown {
-		    position: relative;
-		    display: inline-block;
-		}
+<!-- /*         form { */ -->
+<!-- /*             display: inline-block; */ -->
+<!-- /*             margin-right: 10px; */ -->
+<!-- /*         } */ -->
+<!-- /*         .dropdown { */ -->
+<!-- /* 		    position: relative; */ -->
+<!-- /* 		    display: inline-block; */ -->
+<!-- /* 		} */ -->
 		
-		.dropdown-content {
-		    display: none;
-		    position: absolute;
-		    background-color: #f9f9f9;
-		    min-width: 160px;
-		    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-		    z-index: 1;
-		}
+<!-- /* 		.dropdown-content { */ -->
+<!-- /* 		    display: none; */ -->
+<!-- /* 		    position: absolute; */ -->
+<!-- /* 		    background-color: #f9f9f9; */ -->
+<!-- /* 		    min-width: 160px; */ -->
+<!-- /* 		    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */ -->
+<!-- /* 		    z-index: 1; */ -->
+<!-- /* 		} */ -->
 		
-		.dropdown-content a {
-		    color: black;
-		    padding: 12px 16px;
-		    text-decoration: none;
-		    display: block;
-		    text-align: left;
-		}
+<!-- /* 		.dropdown-content a { */ -->
+<!-- /* 		    color: black; */ -->
+<!-- /* 		    padding: 12px 16px; */ -->
+<!-- /* 		    text-decoration: none; */ -->
+<!-- /* 		    display: block; */ -->
+<!-- /* 		    text-align: left; */ -->
+<!-- /* 		} */ -->
 		
-		.dropdown-content a:hover {
-		    background-color: #f1f1f1;
-		}
+<!-- /* 		.dropdown-content a:hover { */ -->
+<!-- /* 		    background-color: #f1f1f1; */ -->
+<!-- /* 		} */ -->
 		
-		.dropdown:hover .dropdown-content {
-		    display: block;
-		}
-    </style>
+<!-- /* 		.dropdown:hover .dropdown-content { */ -->
+<!-- /* 		    display: block; */ -->
+<!-- /* 		} */ -->
+<!--     </style> -->
 </head>
 <body>
-    <!-- NAVBAR -->
-    <!-- NAVBAR -->
+<div class="main-container">
 	<div class="navbar">
+		<div class="nav-logo">
+	        <a href="index.jsp" style="font-weight: bold; color: var(--color-acento); font-size: 1.3rem;">FLUX</a>
+	    </div>
 	    <div class="nav-links">
 	        <a href="index.jsp">Inicio</a>
 	        <a href="${pageContext.request.contextPath}/BuscarTodosProducto">Productos</a>
@@ -151,7 +157,7 @@
 
     <!-- CONTENIDO PRINCIPAL -->
     <div style="padding: 0 2rem;">
-        <h1> Bienvenidos a NarguEZ </h1>
+        <h1> Bienvenidos a FLUX </h1>
         
         <!-- SECCIÓN USUARIO LOGUEADO (comentada por ahora) -->
         <%-- 
@@ -230,5 +236,6 @@
 		    <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/BuscarTodosPorCategoria?idCategoria=1'">Procesadores</button>
 		</div>
     </div>
+ </div>
 </body>
 </html>

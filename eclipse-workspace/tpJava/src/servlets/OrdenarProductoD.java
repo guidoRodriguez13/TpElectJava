@@ -1,7 +1,7 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,32 +10,27 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import entidades.Producto;
-import logic.ControladorProducto;
 
 @WebServlet("/OrdenarProductoD")
 public class OrdenarProductoD extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    public OrdenarProductoD() {
-        super();
-        // TODO Auto-generated constructor stub
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
+        List<Producto> productos = (List<Producto>) session.getAttribute("prods");
+        
+        if (productos != null && !productos.isEmpty()) {
+            // Ordenar por precio descendente (mayor a menor)
+            productos.sort((p1, p2) -> Double.compare(p2.getPrecio(), p1.getPrecio()));
+            session.setAttribute("prods", productos);
+            session.setAttribute("ordenPrecio", "descendente");
+            System.out.println("Productos ordenados DESCENDENTE - Primer precio: " + productos.get(0).getPrecio());
+        } else {
+            System.out.println("No hay productos en sesión para ordenar");
+        }
+        
+        response.sendRedirect("mostrarProductos.jsp");
     }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LinkedList<Producto> prods = new LinkedList<>();
-		ControladorProducto cp = new ControladorProducto();
-		
-		prods = cp.listadoPorPrecioD();
-
-		HttpSession misession = request.getSession();
-		misession.setAttribute("prods", prods);
-		
-		response.sendRedirect("mostrarProductos.jsp");
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
