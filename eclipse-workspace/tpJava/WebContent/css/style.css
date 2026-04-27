@@ -344,6 +344,55 @@ body {
     padding-bottom: 10px;
 }
 
+/* Filtro avanzado - alineación exacta */
+.filtro-avanzado {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.filtro-avanzado .grupo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.filtro-avanzado label {
+    font-size: 11px;
+    margin-bottom: 3px;
+    color: #aaa;
+}
+
+.filtro-avanzado select,
+.filtro-avanzado input {
+    height: 34px;
+    padding: 0 8px;
+    border: 1px solid #3D3D3D;
+    border-radius: 6px;
+    background-color: var(--fondo-principal);
+    color: var(--texto-principal);
+}
+
+.filtro-avanzado select {
+    min-width: 140px;
+}
+
+.filtro-avanzado input {
+    width: 100px;
+}
+
+.filtro-avanzado button,
+.filtro-avanzado .btn {
+    height: 34px;
+    padding: 0 15px;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0;
+}
+
 /* ============================================
    FOOTER
    ============================================ */

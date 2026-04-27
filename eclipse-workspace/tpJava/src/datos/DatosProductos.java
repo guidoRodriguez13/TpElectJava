@@ -445,4 +445,77 @@ public class DatosProductos {
 	    }
 	    return lista;
 	}
+	
+	public List<Producto> buscarAvanzado(int idCategoria, double precioMin, double precioMax) {
+	    PreparedStatement stmt = null;
+	    ResultSet rs = null;
+	    List<Producto> lista = new ArrayList<>();
+	    
+	    try { //Consulta a la BD para traer el filtro complejo
+	    	if (idCategoria > 0) {
+	    		stmt = Conexion.getInstancia().getConnection().prepareStatement(
+	    			  "SELECT p.idProducto, p.descripcion, p.nombre, p.precio, p.stock, " +
+	    	          "p.idMarca, m.nombreMarca AS nombreMarca, " +
+	    	          "p.idCategoria, c.nombreCat AS nombreCat " +
+	    	          "FROM producto p " +
+	    	          "JOIN marca m ON p.idMarca = m.idMarca " +
+	    	          "JOIN categoria c ON p.idCategoria = c.idCategoria " +
+	    	          "WHERE p.idCategoria = ? AND p.precio >= ? AND p.precio <= ?");
+	    	    
+	    	    stmt.setInt(1, idCategoria);
+	    	    stmt.setDouble(2, precioMin);
+	    	    stmt.setDouble(3, precioMax);
+	    	} else { //si categoria = 0
+	    		stmt = Conexion.getInstancia().getConnection().prepareStatement(
+	    	    	  "SELECT p.idProducto, p.descripcion, p.nombre, p.precio, p.stock, " +
+	    	          "p.idMarca, m.nombreMarca AS nombreMarca, " +
+	    	          "p.idCategoria, c.nombreCat AS nombreCat " +
+	    	          "FROM producto p " +
+	    	          "JOIN marca m ON p.idMarca = m.idMarca " +
+	    	          "JOIN categoria c ON p.idCategoria = c.idCategoria " +
+	    	          "WHERE p.precio >= ? AND p.precio <= ?");
+	    	    
+	    	    stmt.setDouble(1, precioMin);
+	    	    stmt.setDouble(2, precioMax);
+	    	}
+	        
+	        rs = stmt.executeQuery();
+	        
+	        while (rs.next()) {
+	            Producto p = new Producto();
+	            Marca m = new Marca();
+	            Categoria c = new Categoria();
+	            //Atribs del producto.
+	            p.setIdProducto(rs.getInt("idProducto"));
+	            p.setDescripcion(rs.getString("descripcion"));
+	            p.setNombre(rs.getString("nombre"));
+	            p.setPrecio(rs.getInt("precio"));
+	            p.setStock(rs.getInt("stock"));
+	            //Atribs de la marca
+	            m.setIdMarca(rs.getInt("idMarca"));
+	            m.setNombre(rs.getString("nombreMarca"));
+	            //Atribs de la categoria
+	            c.setIdCategoria(rs.getInt("idCategoria"));
+	            c.setNombre(rs.getString("nombreCat"));
+	            
+	            p.setBrand(m);
+	            p.setCat(c);
+	            
+	            lista.add(p);
+	        }
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (stmt != null) stmt.close();
+	            Conexion.getInstancia().releaseConnection();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    
+	    return lista;
+	}
 }

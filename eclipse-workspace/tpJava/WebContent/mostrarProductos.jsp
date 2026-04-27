@@ -4,6 +4,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="entidades.Producto"%>
 <%@page import="entidades.Persona"%>
+<%@page import="entidades.Categoria"%>
+<%@page import="logic.ControladorCategoria"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
@@ -33,16 +35,16 @@
                 <% } else { 
                     Persona user = (Persona) session.getAttribute("usuario");
                 %>
-                    <span class="welcome-text">👋 Bienvenido, <%= user.getNombre() %></span>
+                    <span class="welcome-text">Bienvenido, <%= user.getNombre() %></span>
                     
                     <% if (user.isEsAdmin()) { %>
                         <div class="dropdown">
                             <button class="btn btn-outline">Administrar ▼</button>
                             <div class="dropdown-content">
-                                <a href="${pageContext.request.contextPath}/FormularioAltaProductoServlet">➕ Alta Producto</a>
-                                <a href="${pageContext.request.contextPath}/BuscarTodosUsuarios">👥 Listar Usuarios</a>
-                                <a href="${pageContext.request.contextPath}/FormularioAltaCategoria">🏷️ Nueva Categoría</a>
-                                <a href="${pageContext.request.contextPath}/FormularioAltaMarca">⭐ Nueva Marca</a>
+                                <a href="${pageContext.request.contextPath}/FormularioAltaProductoServlet">Alta Producto</a>
+                                <a href="${pageContext.request.contextPath}/BuscarTodosUsuarios">Listar Usuarios</a>
+                                <a href="${pageContext.request.contextPath}/FormularioAltaCategoria">Nueva Categoría</a>
+                                <a href="${pageContext.request.contextPath}/FormularioAltaMarca">Nueva Marca</a>
                             </div>
                         </div>
                     <% } %>
@@ -53,11 +55,9 @@
             </div>
         </div>
         
-        <!-- CONTENIDO PRINCIPAL -->
         <div class="content-wrapper">
             <h1>Lista de productos</h1>
             
-            <!-- Botones de ordenamiento a la derecha -->
             <div class="ordenamiento-botones">
                 <form action="${pageContext.request.contextPath}/OrdenarProductoA" method="GET">
                     <button type="submit" class="btn btn-outline">⬆️ Precio ascendente</button>
@@ -67,12 +67,40 @@
                 </form>
             </div>
             
+            <div class="ordenamiento-botones" style="gap: 15px;">
+                <form action="${pageContext.request.contextPath}/BusquedaAvanzada" method="GET" style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap;">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="idCategoria" style="display: block; font-size: 0.8rem; margin-bottom: 5px;">Categoría</label>
+                        <select name="idCategoria" id="idCategoria" class="btn btn-outline" style="padding: 0.5rem 1rem;">
+                            <option value="0">Todas las categorías</option>
+                            <%
+                                ControladorCategoria cc = new ControladorCategoria();
+                                List<Categoria> categorias = cc.listar();
+                                for (Categoria cat : categorias) {
+                            %>
+                                <option value="<%= cat.getIdCategoria() %>"><%= cat.getNombre() %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="precioMin" style="display: block; font-size: 0.8rem; margin-bottom: 5px;">Precio mín.</label>
+                        <input type="number" name="precioMin" id="precioMin" placeholder="$0" class="btn btn-outline" style="width: 100px; padding: 0.5rem 1rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="precioMax" style="display: block; font-size: 0.8rem; margin-bottom: 5px;">Precio máx.</label>
+                        <input type="number" name="precioMax" id="precioMax" placeholder="$999999" class="btn btn-outline" style="width: 100px; padding: 0.5rem 1rem;">
+                    </div>
+                    <button type="submit" class="btn btn-primary">🔍 Filtrar</button>
+                    <a href="${pageContext.request.contextPath}/BuscarTodosProducto" class="btn btn-outline">🗑️ Limpiar</a>
+                </form>
+            </div>
+            
             <%
                 List<Producto> listaProductos = (List<Producto>) session.getAttribute("prods");
                 
                 if (listaProductos != null && !listaProductos.isEmpty()) {
                     
-                    // ORDENAR la lista completa según el valor en sesión
+                    // Ordenar la lista completa según el valor en sesión
                     String orden = (String) session.getAttribute("ordenPrecio");
                     if ("ascendente".equals(orden)) {
                         listaProductos.sort((p1, p2) -> Double.compare(p1.getPrecio(), p2.getPrecio()));

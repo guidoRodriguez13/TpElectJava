@@ -57,4 +57,9 @@ public class ControladorProducto {
 	    DatosProductos dao = new DatosProductos();
 	    return dao.getProductosDestacados();
 	}
+	
+	public List<Producto> buscarAvanzado(int idCategoria, double precioMin, double precioMax) {
+	    DatosProductos dp = new DatosProductos();
+	    return dp.buscarAvanzado(idCategoria, precioMin, precioMax);
+	}
 }
