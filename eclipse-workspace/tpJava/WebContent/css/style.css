@@ -12,6 +12,18 @@
     --hover-acento: #38B2AC;
 }
 
+.btn-carrito {
+    background-color: var(--color-acento);
+    color: var(--fondo-principal);
+    border: 1px solid var(--color-acento);
+}
+
+.btn-carrito:hover {
+    background-color: transparent;
+    color: var(--color-acento);
+    border: 1px solid var(--color-acento);
+}
+
 * {
     margin: 0;
     padding: 0;

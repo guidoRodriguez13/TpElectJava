@@ -19,8 +19,10 @@
 </head>
 <body>
     <div class="main-container">
-        <!-- NAVBAR -->
         <div class="navbar">
+        	<div class="nav-logo">
+		        <a href="index.jsp" style="font-weight: bold; color: var(--color-acento); font-size: 1.3rem;">FLUX</a>
+		    </div>
             <div class="nav-links">
                 <a href="index.jsp">Inicio</a>
                 <a href="${pageContext.request.contextPath}/BuscarTodosProducto">Productos</a>
@@ -56,7 +58,7 @@
         </div>
         
         <div class="content-wrapper">
-            <h1>Lista de productos</h1>
+            <h1>Productos</h1>
             
             <div class="ordenamiento-botones">
                 <form action="${pageContext.request.contextPath}/OrdenarProductoA" method="GET">
