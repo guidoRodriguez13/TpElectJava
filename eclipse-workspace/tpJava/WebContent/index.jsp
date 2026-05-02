@@ -16,8 +16,10 @@
 <div class="main-container">
 	<div class="navbar">
 		<div class="nav-logo">
-	        <a href="index.jsp" style="font-weight: bold; color: var(--color-acento); font-size: 1.3rem;">FLUX</a>
-	    </div>
+    		<a href="index.jsp">
+        		<img src="${pageContext.request.contextPath}/images/flux.png" alt="FLUX" style="height: 100px;">
+    		</a>
+		</div>
 	    <div class="nav-links">
 	        <a href="index.jsp">Inicio</a>
 	        <a href="${pageContext.request.contextPath}/BuscarTodosProducto">Productos</a>
@@ -52,9 +54,13 @@
 	    </div>
 	</div>
 
-    <!-- CONTENIDO PRINCIPAL -->
+	<!-- BANNER -->
+<div style="width: 100%; margin-bottom: 0;">
+    <img src="${pageContext.request.contextPath}/images/fluxbanner.png" alt="FLUX Banner" style="width: 100%; height: 350px; display: block; object-fit: cover;">
+</div>
+
+	<div class="content-wrapper"></div>
     <div style="padding: 0 2rem;">
-        <h1> Bienvenidos a FLUX </h1>
         
         <!-- SECCIÓN USUARIO LOGUEADO (comentada por ahora) -->
         <%-- 
@@ -101,31 +107,29 @@
         %>
         --%>
 
-        <!-- PRODUCTOS DESTACADOS DESDE BD -->
-		<h2>Productos Destacados</h2>
-		<%
-		    List<Producto> productos = (List<Producto>) request.getAttribute("productos");
-		    if (productos != null && !productos.isEmpty()) {
-		%>
-		    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
-		        <% for (Producto prod : productos) { %>
-		            <div style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
-		                <h3><%= prod.getNombre() %></h3>
-		                <p><%= prod.getDescripcion() %></p>
-		                <p class="precio">$<%= prod.getPrecio() %></p>
-		                <button class="btn btn-primary" onclick="agregarAlCarrito(<%= prod.getIdProducto() %>)">Agregar</button>
-		            </div>
-		        <% } %>
-		    </div>
-		<%
-		    } else {
-		%>
-		    <p>No hay productos destacados disponibles.</p>
-		<%    }%>
+<!--         PRODUCTOS DESTACADOS DESDE BD -->
+<!-- 		<h2>Productos Destacados</h2> -->
+<%-- 		<% --%>
+<!-- // 		    List<Producto> productos = (List<Producto>) request.getAttribute("productos"); -->
+<!-- // 		    if (productos != null && !productos.isEmpty()) { -->
+<%-- 		%> --%>
+<!-- 		    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;"> -->
+<%-- 		        <% for (Producto prod : productos) { %> --%>
+<!-- 		            <div style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;"> -->
+<%-- 		                <h3><%= prod.getNombre() %></h3> --%>
+<%-- 		                <p><%= prod.getDescripcion() %></p> --%>
+<%-- 		                <p class="precio">$<%= prod.getPrecio() %></p> --%>
+<%-- 		                <button class="btn btn-primary" onclick="agregarAlCarrito(<%= prod.getIdProducto() %>)">Agregar</button> --%>
+<!-- 		            </div> -->
+<%-- 		        <% } %> --%>
+<!-- 		    </div> -->
+<%-- 		<% --%>
+<!-- // 		    } else { -->
+<%-- 		%> --%>
+<!-- 		    <p>No hay productos destacados disponibles.</p> -->
+<%-- 		<%    }%> --%>
         
-        <!-- CATEGORÍAS -->
-        <h2>Categorías</h2>
-        <div style="display: flex; gap: 10px; margin: 20px 0;">
+        <div style="display: flex; justify-content: center; gap: 10px; margin: 20px 0;">
 		    <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/BuscarTodosPorCategoria?idCategoria=3'">Memorias</button>
 		    <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/BuscarTodosPorCategoria?idCategoria=4'">Almacenamiento</button>
 		    <button class="btn btn-outline" onclick="location.href='${pageContext.request.contextPath}/BuscarTodosPorCategoria?idCategoria=2'">Tarjetas gráficas</button>
